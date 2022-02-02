@@ -1,23 +1,16 @@
 class Player
-  @@players = 0
+  attr_accessor :player, :score
 
-  attr_reader :score, :short, :full 
-
-  def initialize
-    @@players += 1
-    self.short = "P#{@@players}"
-    self.full = "Player #{@@players}"
-    self.score = 3
+  def initialize(player)
+    @player = player
+    @score = 3
   end
 
   def loose_point
-    self.score -= 1
+    @score -= 1
   end
 
-  def winner
-    "#{score}/3"    
+  def game_over?
+    @score == 1
   end
-
-  protected
-  attr_writer :score, :short, :full
 end
